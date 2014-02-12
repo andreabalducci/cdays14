@@ -12,5 +12,14 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             Id = e.ResourceId;
             Name = e.Name;
         }
+
+
+        public override void EnsureAllInvariants()
+        {
+            base.EnsureAllInvariants();
+
+            if(this.Name == null)
+                throw new DomainException("Resource name not set");
+        }
     }
 }

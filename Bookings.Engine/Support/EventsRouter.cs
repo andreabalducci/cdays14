@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bookings.Engine.Domain;
 using CommonDomain;
 using CommonDomain.Core;
 
@@ -26,6 +27,12 @@ namespace Bookings.Engine.Support
     public abstract class AggregateState<TId> where TId : AggreagateId
     {
         public TId Id { get; protected set; }
+
+        public virtual void EnsureAllInvariants()
+        {
+            if(this.Id == null)
+                throw new DomainException("AggregateState Identifier is null");
+        }
     }
 
     public abstract class Aggregate<TState, TId> : AggregateBase 
@@ -45,6 +52,14 @@ namespace Bookings.Engine.Support
         internal void SetIdFromState()
         {
             this.Id = this.State.Id.Id;
+        }
+
+        public void EnsureAllInvariants()
+        {
+            if (this.Id == Guid.Empty)
+                throw new DomainException("The aggregate Id must be set");
+
+            this.State.EnsureAllInvariants();
         }
     }
 
@@ -74,7 +89,7 @@ namespace Bookings.Engine.Support
         public void Dispatch(object eventMessage)
         {
             ((dynamic)Aggregate.State).On((dynamic)eventMessage);
-            if (Aggregate.Version == 1)
+            if (Aggregate.Version == 0)
             {
                 Aggregate.SetIdFromState();
             }

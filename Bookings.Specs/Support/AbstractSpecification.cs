@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bookings.Engine.Support;
+using CommonDomain;
 
 namespace Bookings.Specs.Support
 {
@@ -21,6 +22,20 @@ namespace Bookings.Specs.Support
 
         protected static TState State {
             get { return Aggregate.State;  }
+        }
+
+        protected static TEvent LastRaisedEventOfType<TEvent>() where TEvent : class
+        {
+            return UncommittedEvents.OfType<TEvent>().LastOrDefault();
+        }
+
+        protected static IEnumerable<object> UncommittedEvents
+        {
+            get
+            {
+                IAggregate agg = Aggregate;
+                return agg.GetUncommittedEvents().Cast<object>();
+            }
         }
     }
 }
