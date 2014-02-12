@@ -1,4 +1,5 @@
 using Bookings.Engine.Domain.Bookings;
+using Bookings.Engine.Domain.Bookings.Resource;
 using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming

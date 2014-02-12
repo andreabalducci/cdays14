@@ -45,7 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Bookings\Resource.cs" />
+    <Compile Include="Domain\Bookings\Resource\ResourceAggregate.cs" />
+    <Compile Include="Domain\Bookings\Resource\Events\ResourceCreated.cs" />
+    <Compile Include="Domain\Bookings\Resource\ResourceId.cs" />
+    <Compile Include="Domain\Bookings\Resource\ResourceState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\EvenstoreBootstrapper.cs" />
     <Compile Include="Support\EventsRouter.cs" />
