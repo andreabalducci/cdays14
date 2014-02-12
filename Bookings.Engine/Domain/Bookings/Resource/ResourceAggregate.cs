@@ -13,9 +13,9 @@ namespace Bookings.Engine.Domain.Bookings.Resource
         {
         }
 
-        public void Create(ResourceId resourceId)
+        public void Create(ResourceId id, ResourceName name)
         {
-            RaiseEvent(new ResourceCreated(resourceId));
+            RaiseEvent(new ResourceCreated(id, name));
         }
     }
 }
