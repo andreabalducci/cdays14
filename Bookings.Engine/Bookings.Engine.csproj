@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Bookings\BookingRequest\BookingRequestAggregate.cs" />
     <Compile Include="Domain\Bookings\Resource\ResourceAggregate.cs" />
     <Compile Include="Domain\Bookings\Resource\Events\ResourceCreated.cs" />
     <Compile Include="Domain\Bookings\Resource\ResourceId.cs" />
