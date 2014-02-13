@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bookings.Engine.Domain.Bookings.BookingRequest.Events;
+using Bookings.Engine.Domain.Bookings.Resource;
 using Bookings.Engine.Support;
 
 namespace Bookings.Engine.Domain.Bookings.BookingRequest
@@ -17,31 +19,9 @@ namespace Bookings.Engine.Domain.Bookings.BookingRequest
         {
         }
 
-        public void Create(BookingRequestId id)
+        public void Create(BookingRequestId id, ResourceId resourceId, BookingTimeframe timeframe)
         {
-            RaiseEvent(new BookingRequestCreated(id));
+            RaiseEvent(new BookingRequestCreated(id, resourceId, timeframe));
         }
-    }
-
-    public class BookingRequestCreated
-    {
-        public BookingRequestId BookingRequestId { get; set; }
-
-        public BookingRequestCreated(BookingRequestId id)
-        {
-            BookingRequestId = id;
-        }
-    }
-
-    public class BookingRequestState : AggregateState<BookingRequestId>
-    {
-        public void On(BookingRequestCreated e)
-        {
-            this.Id = e.BookingRequestId;
-        }
-    }
-
-    public class BookingRequestId : AggreagateId
-    {
     }
 }

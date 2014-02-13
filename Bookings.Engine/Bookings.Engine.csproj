@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Bookings\BookingRequest\BookingRequestAggregate.cs" />
+    <Compile Include="Domain\Bookings\BookingRequest\Events\BookingRequestCreated.cs" />
+    <Compile Include="Domain\Bookings\BookingRequest\BookingRequestId.cs" />
+    <Compile Include="Domain\Bookings\BookingRequest\BookingRequestState.cs" />
     <Compile Include="Domain\Bookings\Resource\ResourceAggregate.cs" />
     <Compile Include="Domain\Bookings\Resource\Events\ResourceCreated.cs" />
     <Compile Include="Domain\Bookings\Resource\ResourceId.cs" />
