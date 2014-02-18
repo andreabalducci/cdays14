@@ -2,7 +2,7 @@
 using Bookings.Specs.Support;
 
 // ReSharper disable once InconsistentNaming
-namespace Bookings.Specs.Domain.BookingRequestSpecs
+namespace Bookings.Specs.Specs.BookingRequestSpecs
 {
     public abstract class in_bookingRequest_context : 
         AbstractSpecification<

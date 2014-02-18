@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bookings.Engine.Domain.Auth.Users;
 using Bookings.Engine.Domain.Bookings.BookingRequest;
 using Bookings.Engine.Domain.Bookings.BookingRequest.Events;
@@ -11,7 +7,7 @@ using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming
 
-namespace Bookings.Specs.Domain.BookingRequestSpecs
+namespace Bookings.Specs.Specs.BookingRequestSpecs
 {
     [Subject("Given a new BookingRequest")]
     public class when_is_created : in_bookingRequest_context

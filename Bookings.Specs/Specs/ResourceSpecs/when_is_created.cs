@@ -1,11 +1,10 @@
 using Bookings.Engine.Domain.Auth.Users;
-using Bookings.Engine.Domain.Bookings;
 using Bookings.Engine.Domain.Bookings.Resource;
 using Bookings.Engine.Domain.Bookings.Resource.Events;
 using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming
-namespace Bookings.Specs.Domain.ResourceSpecs
+namespace Bookings.Specs.Specs.ResourceSpecs
 {
     [Subject("Given new Resource")]
     public class when_is_created : in_resource_context

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Domain\Auth\Users\UserId.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\BookingRequestAggregate.cs" />
+    <Compile Include="Domain\Bookings\BookingRequest\BookingTimeframe.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\Events\BookingRequestAuthorized.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\Events\BookingRequestCreated.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\BookingRequestId.cs" />
