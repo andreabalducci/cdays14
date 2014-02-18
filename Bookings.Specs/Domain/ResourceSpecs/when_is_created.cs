@@ -1,3 +1,4 @@
+using Bookings.Engine.Domain.Auth.Users;
 using Bookings.Engine.Domain.Bookings;
 using Bookings.Engine.Domain.Bookings.Resource;
 using Bookings.Engine.Domain.Bookings.Resource.Events;
@@ -11,12 +12,13 @@ namespace Bookings.Specs.Domain.ResourceSpecs
     {
         static readonly ResourceId _resourceId = new ResourceId();
         static readonly ResourceName _resourceName = new ResourceName("Surface Pro");
-        
+        static readonly UserId _managerId = new UserId();
+
         Establish context = () => 
             SetUp();
         
         Because of = () =>
-            Aggregate.Create(_resourceId, _resourceName);
+            Aggregate.Create(_resourceId, _resourceName, _managerId);
         
         //
         // State changes
@@ -26,6 +28,9 @@ namespace Bookings.Specs.Domain.ResourceSpecs
 
         It the_name_should_be_set = () =>
             State.Name.ShouldBeLike(_resourceName);
+
+        It the_manager_has_been_set = () =>
+            State.IsManager(_managerId).ShouldBeTrue();
 
         //
         // Events

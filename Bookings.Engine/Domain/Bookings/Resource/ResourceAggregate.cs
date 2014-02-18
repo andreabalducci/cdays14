@@ -1,21 +1,35 @@
-﻿using Bookings.Engine.Domain.Bookings.Resource.Events;
+﻿using System;
+using Bookings.Engine.Domain.Auth.Users;
+using Bookings.Engine.Domain.Bookings.Resource.Events;
 using Bookings.Engine.Support;
 
 namespace Bookings.Engine.Domain.Bookings.Resource
 {
     public class ResourceAggregate : Aggregate<ResourceState, ResourceId>
     {
-        public ResourceAggregate(ResourceState state = null) : base(state ?? new ResourceState())
+        public ResourceAggregate(ResourceState state = null)
+            : base(state ?? new ResourceState())
         {
         }
 
-        public ResourceAggregate() : this(null)
+        public ResourceAggregate()
+            : this(null)
         {
         }
 
-        public void Create(ResourceId id, ResourceName name)
+        public void Create(ResourceId id, ResourceName name, UserId managerId)
         {
+            if (id == null)
+                throw new ArgumentNullException("id");
+            
+            if (name == null)
+                throw new ArgumentNullException("name");
+            
+            if (managerId == null)
+                throw new ArgumentNullException("managerId");
+
             RaiseEvent(new ResourceCreated(id, name));
+            RaiseEvent(new ResourceManagerAdded(managerId));
         }
     }
 }
