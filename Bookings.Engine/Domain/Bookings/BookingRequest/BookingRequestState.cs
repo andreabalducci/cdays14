@@ -16,5 +16,10 @@ namespace Bookings.Engine.Domain.Bookings.BookingRequest
         {
             HasBeenAuthorized = true;
         }
+
+        public override void EnsureAllInvariants()
+        {
+            base.EnsureAllInvariants();
+        }
     }
 }
