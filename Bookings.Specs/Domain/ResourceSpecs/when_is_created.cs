@@ -30,7 +30,7 @@ namespace Bookings.Specs.Domain.ResourceSpecs
         //
         // Events
         //
-        It ResourceCreated_event_should_be_raised = () =>
+        It ResourceCreated_event_should_have_been_raised = () =>
             LastRaisedEventOfType<ResourceCreated>().ShouldNotBeNull();
 
         It ResourceCreated_event_shoud_have_the_resource_id_set = () =>

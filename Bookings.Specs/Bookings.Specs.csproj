@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\BookingRequestSpecs\in_bookingRequest_context.cs" />
+    <Compile Include="Domain\BookingRequestSpecs\when_is_authorized.cs" />
     <Compile Include="Domain\BookingRequestSpecs\when_is_created.cs" />
     <Compile Include="Domain\ResourceSpecs\in_resource_context.cs" />
     <Compile Include="Domain\ResourceSpecs\when_is_created.cs" />

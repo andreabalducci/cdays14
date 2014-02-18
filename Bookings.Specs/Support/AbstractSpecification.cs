@@ -11,13 +11,15 @@ namespace Bookings.Specs.Support
     public abstract class AbstractSpecification<TAggregate, TState, TId> 
         where TAggregate: Aggregate<TState, TId>, new() 
         where TState : AggregateState<TId> 
-        where TId : AggreagateId
+        where TId : AggregateId
     {
         public static TAggregate Aggregate { get; private set; }
 
-        protected static void SetUp(TAggregate aggregate = null)
+        protected static void SetUp(TState state = null)
         {
-            Aggregate = aggregate ?? new TAggregate();
+            Aggregate = new TAggregate();
+            if (state != null)
+                Aggregate.State = state;
         }
 
         protected static TState State {

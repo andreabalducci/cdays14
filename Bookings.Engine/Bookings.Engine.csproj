@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Auth\Users\UserId.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\BookingRequestAggregate.cs" />
+    <Compile Include="Domain\Bookings\BookingRequest\Events\BookingRequestAuthorized.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\Events\BookingRequestCreated.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\BookingRequestId.cs" />
     <Compile Include="Domain\Bookings\BookingRequest\BookingRequestState.cs" />
@@ -56,8 +58,11 @@
     <Compile Include="Domain\Bookings\Resource\ResourceState.cs" />
     <Compile Include="Domain\DomainException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\Aggregate.cs" />
+    <Compile Include="Support\AggregateState.cs" />
     <Compile Include="Support\EvenstoreBootstrapper.cs" />
-    <Compile Include="Support\EventsRouter.cs" />
+    <Compile Include="Support\EventRouter.cs" />
+    <Compile Include="Support\AggregateId.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

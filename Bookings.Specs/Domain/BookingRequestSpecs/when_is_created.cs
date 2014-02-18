@@ -6,30 +6,24 @@ using System.Threading.Tasks;
 using Bookings.Engine.Domain.Bookings.BookingRequest;
 using Bookings.Engine.Domain.Bookings.BookingRequest.Events;
 using Bookings.Engine.Domain.Bookings.Resource;
-using Bookings.Specs.Support;
 using Machine.Specifications;
 
 // ReSharper disable InconsistentNaming
 
 namespace Bookings.Specs.Domain.BookingRequestSpecs
 {
-    public class when_is_created : in_bookingRequest_context
-    {
-
-    }
-
     [Subject("Given a new BookingRequest")]
-    public class in_bookingRequest_context : AbstractSpecification<BookingRequestAggregate,BookingRequestState, BookingRequestId>
+    public class when_is_created : in_bookingRequest_context
     {
         private static readonly BookingRequestId _id = new BookingRequestId();
         private static readonly ResourceId _resourceId = new ResourceId();
 
-        Establish context = () => 
+        Establish context = () =>
             SetUp();
 
-        Because of = () => 
-            Aggregate.Create(_id, 
-            _resourceId, 
+        Because of = () =>
+            Aggregate.Create(_id,
+            _resourceId,
             new BookingTimeframe(DateTime.Parse("2014-01-01"), DateTime.Parse("2014-01-03")));
 
         //
@@ -42,7 +36,7 @@ namespace Bookings.Specs.Domain.BookingRequestSpecs
         //
         // Events
         // 
-        It BookingRequestCreated_event_should_be_raised = () =>
+        It BookingRequestCreated_event_should_have_been_raised = () =>
             LastRaisedEventOfType<BookingRequestCreated>().ShouldNotBeNull();
 
         It BookingRequest_event_shoud_have_the_resource_id_set = () =>
