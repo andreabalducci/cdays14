@@ -4,7 +4,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
 {
     public class ResourceName : IEquatable<ResourceName>
     {
-        private const int ResourceNameMinLen = 4;
+        private const int ResourceNameMinLen = 6;
         private readonly string _name;
 
         public ResourceName(string name)

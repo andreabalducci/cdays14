@@ -12,10 +12,6 @@ namespace Bookings.Engine.Domain.Bookings.BookingRequest
 {
     public class BookingRequestAggregate : Aggregate<BookingRequestState, BookingRequestId>
     {
-        public BookingRequestAggregate(BookingRequestState state) : base(state)
-        {
-        }
-
         public BookingRequestAggregate() : base(new BookingRequestState())
         {
         }

@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\AbstractSpecification.cs" />
     <Compile Include="Unit\BookingTimeframeTests.cs" />
+    <Compile Include="Unit\ResourceNameTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
