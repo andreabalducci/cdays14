@@ -1,5 +1,6 @@
 ﻿using System;
 using Bookings.Engine.Domain.Auth.Users;
+using Bookings.Engine.Domain.Bookings.BookingRequest;
 using Bookings.Engine.Domain.Bookings.Resource.Events;
 using Bookings.Engine.Support;
 
@@ -21,15 +22,33 @@ namespace Bookings.Engine.Domain.Bookings.Resource
         {
             if (id == null)
                 throw new ArgumentNullException("id");
-            
+
             if (name == null)
                 throw new ArgumentNullException("name");
-            
+
             if (managerId == null)
                 throw new ArgumentNullException("managerId");
 
             RaiseEvent(new ResourceCreated(id, name));
             RaiseEvent(new ResourceManagerAdded(managerId));
+        }
+
+        public void Book(
+            BookingRequestId requestId,
+            UserId approvedByUserId,
+            BookingTimeframe timeframe
+        )
+        {
+            if (!State.IsManager(approvedByUserId))
+            {
+
+                return;
+            }
+
+            if (State.IsResourceAvailable(timeframe))
+            {
+                RaiseEvent(new ResourceBooked(requestId, approvedByUserId, timeframe));
+            }
         }
     }
 }

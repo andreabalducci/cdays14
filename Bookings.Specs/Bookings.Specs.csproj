@@ -62,6 +62,7 @@
     <Compile Include="Specs\BookingRequestSpecs\when_is_authorized.cs" />
     <Compile Include="Specs\BookingRequestSpecs\when_is_created.cs" />
     <Compile Include="Specs\ResourceSpecs\in_resource_context.cs" />
+    <Compile Include="Specs\ResourceSpecs\when_is_booked.cs" />
     <Compile Include="Specs\ResourceSpecs\when_is_created.cs" />
     <Compile Include="Evenstore\StoreSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
