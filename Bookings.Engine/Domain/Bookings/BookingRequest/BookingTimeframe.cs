@@ -9,11 +9,21 @@ namespace Bookings.Engine.Domain.Bookings.BookingRequest
 
         public BookingTimeframe(DateTime from, DateTime to)
         {
-            if(to <= from)
+            if(to < from)
                 throw new DomainException("Invalid timeframe");
             
             From = from;
             To = to;
+        }
+
+        public bool Overlaps(BookingTimeframe other)
+        {
+            return this.From <= other.To && this.To >= other.From;
+        }
+
+        public static BookingTimeframe Build(DateTime from, int days)
+        {
+            return new BookingTimeframe(from, from.AddDays(days));
         }
     }
 }

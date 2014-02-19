@@ -65,7 +65,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
 
         public bool IsResourceAvailable(BookingTimeframe timeframe)
         {
-            return true;
+            return this.Reservations.All(x => !x.Timeframe.Overlaps(timeframe));
         }
     }
 }

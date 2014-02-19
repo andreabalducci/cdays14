@@ -49,6 +49,10 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             {
                 RaiseEvent(new ResourceBooked(requestId, approvedByUserId, timeframe));
             }
+            else
+            {
+                RaiseEvent(new ResourceBookingFailed(requestId, "Unavailable"));
+            }
         }
     }
 }
