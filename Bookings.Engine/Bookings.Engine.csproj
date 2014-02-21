@@ -54,8 +54,8 @@
     <Compile Include="Domain\Bookings\BookingRequest\BookingRequestState.cs" />
     <Compile Include="Domain\Bookings\Resource\ResourceAggregate.cs" />
     <Compile Include="Domain\Bookings\Resource\Events\ResourceCreated.cs" />
-    <Compile Include="Domain\Bookings\Resource\Events\ResourceBooked.cs" />
-    <Compile Include="Domain\Bookings\Resource\Events\ResourceBookingFailed.cs" />
+    <Compile Include="Domain\Bookings\Resource\Events\ResourceReserved.cs" />
+    <Compile Include="Domain\Bookings\Resource\Events\ResourceReservationFailed.cs" />
     <Compile Include="Domain\Bookings\Resource\ResourceId.cs" />
     <Compile Include="Domain\Bookings\Resource\Events\ResourceManagerAdded.cs" />
     <Compile Include="Domain\Bookings\Resource\ResourceName.cs" />

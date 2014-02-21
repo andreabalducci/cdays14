@@ -36,19 +36,19 @@ namespace Bookings.Specs.Specs.ResourceSpecs
                 });
 
             Because of = () =>
-                Resource.Book(_requestId, _managerId, Interval);
+                Resource.AddReservation(_requestId, _managerId, Interval);
 
             It resource_booked_event_should_be_raised = () =>
-                LastRaisedEventOfType<ResourceBooked>().ShouldNotBeNull();
+                LastRaisedEventOfType<ResourceReserved>().ShouldNotBeNull();
 
             It resource_booked_event_should_have_the_interval_set = () =>
-                LastRaisedEventOfType<ResourceBooked>().Interval.ShouldBeTheSameAs(Interval);
+                LastRaisedEventOfType<ResourceReserved>().Interval.ShouldBeTheSameAs(Interval);
 
             It resource_booked_event_should_have_the_approving_user_id_set = () =>
-                LastRaisedEventOfType<ResourceBooked>().ApprovedByUserId.ShouldBeLike(_managerId);
+                LastRaisedEventOfType<ResourceReserved>().ApprovedByUserId.ShouldBeLike(_managerId);
 
             It resource_booked_event_should_have_the_request_id_set = () =>
-                LastRaisedEventOfType<ResourceBooked>().RequestId.ShouldBeLike(_requestId);
+                LastRaisedEventOfType<ResourceReserved>().RequestId.ShouldBeLike(_requestId);
 
             It invariants_should_be_satisfied = () =>
                 Resource.EnsureAllInvariants();

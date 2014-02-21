@@ -2,12 +2,12 @@
 
 namespace Bookings.Engine.Domain.Bookings.Resource.Events
 {
-    public class ResourceBookingFailed
+    public class ResourceReservationFailed
     {
         public BookingRequestId RequestId { get; private set; }
         public string Reason { get; private set; }
 
-        public ResourceBookingFailed(BookingRequestId requestId, string reason)
+        public ResourceReservationFailed(BookingRequestId requestId, string reason)
         {
             RequestId = requestId;
             Reason = reason;

@@ -42,7 +42,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             Managers.Add(e.ManagerId);
         }
 
-        public void On(ResourceBooked e)
+        public void On(ResourceReserved e)
         {
             this.Reservations.Add(new Reservation(e.RequestId, e.Interval));
         }

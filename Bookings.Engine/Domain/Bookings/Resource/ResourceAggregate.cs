@@ -33,7 +33,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             RaiseEvent(new ResourceManagerAdded(managerId));
         }
 
-        public void Book(
+        public void AddReservation(
             BookingRequestId requestId,
             UserId approvedByUserId,
             BookingInterval interval
@@ -47,11 +47,11 @@ namespace Bookings.Engine.Domain.Bookings.Resource
 
             if (State.IsResourceAvailable(interval))
             {
-                RaiseEvent(new ResourceBooked(requestId, approvedByUserId, interval));
+                RaiseEvent(new ResourceReserved(requestId, approvedByUserId, interval));
             }
             else
             {
-                RaiseEvent(new ResourceBookingFailed(requestId, "Unavailable"));
+                RaiseEvent(new ResourceReservationFailed(requestId, "Unavailable"));
             }
         }
     }

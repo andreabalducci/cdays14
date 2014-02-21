@@ -3,13 +3,13 @@ using Bookings.Engine.Domain.Bookings.BookingRequest;
 
 namespace Bookings.Engine.Domain.Bookings.Resource.Events
 {
-    public class ResourceBooked
+    public class ResourceReserved
     {
         public BookingRequestId RequestId { get; private set; }
         public UserId ApprovedByUserId { get; private set; }
         public BookingInterval Interval { get; private set; }
 
-        public ResourceBooked(
+        public ResourceReserved(
             BookingRequestId requestId,
             UserId approvedByUserId,
             BookingInterval interval
