@@ -16,7 +16,7 @@ namespace Bookings.Specs.Specs.ResourceSpecs
     [Subject("Given a resource with bookings")]
     public class resource_with_bookings
     {
-        public class when_is_booked : in_resource_context
+        public class when_a_reservation_is_made_for_an_interval_already_reserved : in_resource_context
         {
             private static readonly BookingRequestId _requestId = new BookingRequestId();
 
@@ -27,28 +27,39 @@ namespace Bookings.Specs.Specs.ResourceSpecs
 
             private static readonly UserId _managerId = new UserId();
 
-            Establish content = () =>
-                SetUp(new ResourceState()
+            private Establish content = () =>
+            {
+                var state = new ResourceState()
                 {
                     Id = new ResourceId(),
                     Name = new ResourceName("Surface Pro"),
                     Managers = new HashSet<UserId>(new[] { _managerId })
-                });
+                };
+
+                state.Reservations.Add(
+                    new ResourceState.Reservation(
+                        new BookingRequestId(),
+                        new BookingInterval(
+                            DateTime.Parse("2014-01-03"),
+                            DateTime.Parse("2014-01-07")
+                        )
+                    )
+                );
+
+                SetUp(state);
+            };
 
             Because of = () =>
                 Resource.AddReservation(_requestId, _managerId, Interval);
 
-            It resource_booked_event_should_be_raised = () =>
-                LastRaisedEventOfType<ResourceReserved>().ShouldNotBeNull();
+            It resource_reserved_event_should_not_be_raised = () =>
+                LastRaisedEventOfType<ResourceReserved>().ShouldBeNull();
 
-            It resource_booked_event_should_have_the_interval_set = () =>
-                LastRaisedEventOfType<ResourceReserved>().Interval.ShouldBeTheSameAs(Interval);
+            It resource_reservation_failed_event_should_be_raised = () =>
+                LastRaisedEventOfType<ResourceReservationFailed>().ShouldNotBeNull();
 
-            It resource_booked_event_should_have_the_approving_user_id_set = () =>
-                LastRaisedEventOfType<ResourceReserved>().ApprovedByUserId.ShouldBeLike(_managerId);
-
-            It resource_booked_event_should_have_the_request_id_set = () =>
-                LastRaisedEventOfType<ResourceReserved>().RequestId.ShouldBeLike(_requestId);
+            It resource_reservation_failed_event_should_contain_the_request_id = () =>
+                LastRaisedEventOfType<ResourceReservationFailed>().RequestId.ShouldBeLike(_requestId);
 
             It invariants_should_be_satisfied = () =>
                 Resource.EnsureAllInvariants();

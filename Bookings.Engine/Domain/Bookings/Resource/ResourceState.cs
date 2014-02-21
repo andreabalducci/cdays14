@@ -47,6 +47,11 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             this.Reservations.Add(new Reservation(e.RequestId, e.Interval));
         }
 
+        public void On(ResourceReservationFailed e)
+        {
+        
+        }
+
         public bool IsManager(UserId userId)
         {
             return Managers.Contains(userId);
