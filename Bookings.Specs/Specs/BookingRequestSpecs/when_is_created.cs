@@ -24,7 +24,7 @@ namespace Bookings.Specs.Specs.BookingRequestSpecs
                 _requestId,
                 _userId,
                 _resourceId,
-                new BookingTimeframe(
+                new BookingInterval(
                     DateTime.Parse("2014-01-01"),
                     DateTime.Parse("2014-01-03")
                 )
@@ -54,11 +54,11 @@ namespace Bookings.Specs.Specs.BookingRequestSpecs
                 .UserId.ShouldBeLike(_userId);
 
 
-        private It BookingRequestCreated_event_should_have_the_timeframe_set = () =>
+        private It BookingRequestCreated_event_should_have_the_interval_set = () =>
         {
             var evt = LastRaisedEventOfType<BookingRequestCreated>();
-            evt.Timeframe.From.ShouldBeLike(DateTime.Parse("2014-01-01"));
-            evt.Timeframe.To.ShouldBeLike(DateTime.Parse("2014-01-03"));
+            evt.Interval.From.ShouldBeLike(DateTime.Parse("2014-01-01"));
+            evt.Interval.To.ShouldBeLike(DateTime.Parse("2014-01-03"));
         };
 
         //

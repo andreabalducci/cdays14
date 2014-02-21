@@ -10,17 +10,17 @@ using NUnit.Framework;
 namespace Bookings.Specs.Unit
 {
     [TestFixture]
-    public class BookingTimeframeTests
+    public class BookingIntervalTests
     {
         [Test]
-        public void creating_timeframe_with_inverted_dates_should_throw()
+        public void creating_interval_with_inverted_dates_should_throw()
         {
             var today = DateTime.Today;
             var tomorrow = today.AddDays(1);
 
-            var ex = Assert.Throws<DomainException>(() => new BookingTimeframe(tomorrow, today));
+            var ex = Assert.Throws<DomainException>(() => new BookingInterval(tomorrow, today));
 
-            Assert.AreEqual(ex.Message, "Invalid timeframe");
+            Assert.AreEqual(ex.Message, "Invalid Interval");
         }
 
         [Test]
@@ -33,8 +33,8 @@ namespace Bookings.Specs.Unit
         [TestCase("2014-12-01", "2014-12-31", "2014-01-05", "2014-01-10", false)]
         public void overlapping(DateTime start1, DateTime end1, DateTime start2, DateTime end2, bool overlaps)
         {
-            var tf1 = new BookingTimeframe(start1, end1);
-            var tf2 = new BookingTimeframe(start2, end2);
+            var tf1 = new BookingInterval(start1, end1);
+            var tf2 = new BookingInterval(start2, end2);
 
             Assert.AreEqual(overlaps, tf1.Overlaps(tf2));
         }

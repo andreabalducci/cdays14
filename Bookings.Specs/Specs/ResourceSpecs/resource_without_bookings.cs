@@ -20,7 +20,7 @@ namespace Bookings.Specs.Specs.ResourceSpecs
         {
             private static readonly BookingRequestId _requestId = new BookingRequestId();
 
-            private static readonly BookingTimeframe _timeframe = new BookingTimeframe(
+            private static readonly BookingInterval Interval = new BookingInterval(
                 DateTime.Parse("2014-01-01"),
                 DateTime.Parse("2014-01-10")
             );
@@ -36,14 +36,14 @@ namespace Bookings.Specs.Specs.ResourceSpecs
                 });
 
             Because of = () =>
-                Resource.Book(_requestId, _managerId, _timeframe);
+                Resource.Book(_requestId, _managerId, Interval);
 
             // Events
             It resource_booked_event_should_be_raised = () =>
                 LastRaisedEventOfType<ResourceBooked>().ShouldNotBeNull();
 
-            It resource_booked_event_should_have_the_timeframe_set = () =>
-                LastRaisedEventOfType<ResourceBooked>().Timeframe.ShouldBeTheSameAs(_timeframe);
+            It resource_booked_event_should_have_the_interval_set = () =>
+                LastRaisedEventOfType<ResourceBooked>().Interval.ShouldBeTheSameAs(Interval);
 
             It resource_booked_event_should_have_the_approving_user_id_set = () =>
                 LastRaisedEventOfType<ResourceBooked>().ApprovedByUserId.ShouldBeLike(_managerId);

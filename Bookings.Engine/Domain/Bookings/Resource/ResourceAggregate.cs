@@ -36,7 +36,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
         public void Book(
             BookingRequestId requestId,
             UserId approvedByUserId,
-            BookingTimeframe timeframe
+            BookingInterval interval
         )
         {
             if (!State.IsManager(approvedByUserId))
@@ -45,9 +45,9 @@ namespace Bookings.Engine.Domain.Bookings.Resource
                 return;
             }
 
-            if (State.IsResourceAvailable(timeframe))
+            if (State.IsResourceAvailable(interval))
             {
-                RaiseEvent(new ResourceBooked(requestId, approvedByUserId, timeframe));
+                RaiseEvent(new ResourceBooked(requestId, approvedByUserId, interval));
             }
             else
             {

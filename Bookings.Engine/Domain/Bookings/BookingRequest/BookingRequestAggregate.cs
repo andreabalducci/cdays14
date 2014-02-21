@@ -16,9 +16,9 @@ namespace Bookings.Engine.Domain.Bookings.BookingRequest
         {
         }
 
-        public void Create(BookingRequestId id, UserId userId, ResourceId resourceId, BookingTimeframe timeframe)
+        public void Create(BookingRequestId id, UserId userId, ResourceId resourceId, BookingInterval interval)
         {
-            RaiseEvent(new BookingRequestCreated(id, userId, resourceId, timeframe));
+            RaiseEvent(new BookingRequestCreated(id, userId, resourceId, interval));
         }
 
         public void Authorize(UserId authorizedByUserId)
