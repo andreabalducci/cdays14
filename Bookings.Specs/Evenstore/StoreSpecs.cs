@@ -43,10 +43,10 @@ namespace Bookings.Specs.Evenstore
         Because of = () =>
             _repository.Save(_resource, _commitId, h => h.Add("user", "me"));
 
-        It commit_has_been_dispatched = () =>
+        It commit_should_have_been_dispatched = () =>
             _dispatchedCommits.Single().CommitId.ShouldBeLike(_commitId);
 
-        It commit_has_two_events = () =>
+        It commit_should_have_two_events = () =>
         {
             var commit = _dispatchedCommits.Single();
             commit.Events.Count.ShouldBeLike(2);
@@ -55,7 +55,7 @@ namespace Bookings.Specs.Evenstore
             commit.Events[1].Body.ShouldBeOfExactType<ResourceManagerAdded>();
         };
 
-        It commit_has_custom_headers = () =>
+        It commit_should_have_user_name_in_custom_headers = () =>
             _dispatchedCommits.Single().Headers["user"].ShouldBeLike("me");
     }
 }
