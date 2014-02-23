@@ -6,7 +6,8 @@ using Bookings.Specs.Support;
 
 namespace Bookings.Specs.Specs.ResourceSpecs
 {
-    public abstract class in_resource_context : AbstractSpecification<ResourceAggregate, ResourceState, ResourceId>
+    public abstract class in_resource_context : 
+        AbstractSpecification<ResourceAggregate, ResourceState, ResourceId>
     {
         protected static ResourceAggregate Resource
         {
