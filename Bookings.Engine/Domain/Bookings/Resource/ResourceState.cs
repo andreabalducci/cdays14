@@ -31,7 +31,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             this.Reservations = new List<Reservation>();
         }
 
-        public void On(ResourceCreated e)
+        public void On(ResourceRegistered e)
         {
             Id = e.ResourceId;
             Name = e.Name;

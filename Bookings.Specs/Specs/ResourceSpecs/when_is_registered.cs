@@ -7,17 +7,19 @@ using Machine.Specifications;
 namespace Bookings.Specs.Specs.ResourceSpecs
 {
     [Subject("Given new Resource")]
-    public class when_is_created : in_resource_context
+    public class when_is_registered : in_resource_context
     {
         static readonly ResourceId _resourceId = new ResourceId();
         static readonly ResourceName _resourceName = new ResourceName("Surface Pro");
         static readonly UserId _managerId = new UserId();
 
+        // Factory
         Establish context = () => 
-            SetUp();
+            SetUp();    
         
+        // Command
         Because of = () =>
-            Aggregate.Create(_resourceId, _resourceName, _managerId);
+            Resource.Register(_resourceId, _resourceName, _managerId);
         
         //
         // State changes
@@ -34,19 +36,19 @@ namespace Bookings.Specs.Specs.ResourceSpecs
         //
         // Events
         //
-        It ResourceCreated_event_should_have_been_raised = () =>
-            LastRaisedEventOfType<ResourceCreated>().ShouldNotBeNull();
+        It ResourceRegistered_event_should_have_been_raised = () =>
+            LastRaisedEventOfType<ResourceRegistered>().ShouldNotBeNull();
 
-        It ResourceCreated_event_shoud_have_the_resource_id_set = () =>
-            LastRaisedEventOfType<ResourceCreated>().ResourceId.ShouldBeLike(_resourceId);
+        It ResourceRegistered_event_shoud_have_the_resource_id_set = () =>
+            LastRaisedEventOfType<ResourceRegistered>().ResourceId.ShouldBeLike(_resourceId);
 
-        It ResourceCreated_event_shoud_have_the_resource_name_set = () =>
-            LastRaisedEventOfType<ResourceCreated>().Name.ShouldBeLike(_resourceName);
+        It ResourceRegistered_event_shoud_have_the_resource_name_set = () =>
+            LastRaisedEventOfType<ResourceRegistered>().Name.ShouldBeLike(_resourceName);
 
         //
         // Invariants
         //
         It invariants_are_satisfied = () =>
-            Aggregate.EnsureAllInvariants();
+            Resource.EnsureAllInvariants();
     }
 }

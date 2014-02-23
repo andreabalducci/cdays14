@@ -65,7 +65,7 @@
     <Compile Include="Specs\ResourceSpecs\in_resource_context.cs" />
     <Compile Include="Specs\ResourceSpecs\resource_without_bookings.cs" />
     <Compile Include="Specs\ResourceSpecs\resource_with_bookings.cs" />
-    <Compile Include="Specs\ResourceSpecs\when_is_created.cs" />
+    <Compile Include="Specs\ResourceSpecs\when_is_registered.cs" />
     <Compile Include="Evenstore\StoreSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\AbstractSpecification.cs" />

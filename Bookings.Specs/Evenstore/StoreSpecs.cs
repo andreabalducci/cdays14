@@ -33,7 +33,7 @@ namespace Bookings.Specs.Evenstore
             _repository = _eventstore.GetRepository();
 
             _resource = new ResourceAggregate();
-            _resource.Create(
+            _resource.Register(
                 new ResourceId(),
                 new ResourceName("Azure - North Europe"),
                 new UserId()
@@ -51,7 +51,7 @@ namespace Bookings.Specs.Evenstore
             var commit = _dispatchedCommits.Single();
             commit.Events.Count.ShouldBeLike(2);
 
-            commit.Events[0].Body.ShouldBeOfExactType<ResourceCreated>();
+            commit.Events[0].Body.ShouldBeOfExactType<ResourceRegistered>();
             commit.Events[1].Body.ShouldBeOfExactType<ResourceManagerAdded>();
         };
 

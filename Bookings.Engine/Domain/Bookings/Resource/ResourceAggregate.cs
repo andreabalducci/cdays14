@@ -12,7 +12,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
         {
         }
 
-        public void Create(ResourceId id, ResourceName name, UserId managerId)
+        public void Register(ResourceId id, ResourceName name, UserId managerId)
         {
             if (id == null)
                 throw new ArgumentNullException("id");
@@ -23,7 +23,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             if (managerId == null)
                 throw new ArgumentNullException("managerId");
 
-            RaiseEvent(new ResourceCreated(id, name));
+            RaiseEvent(new ResourceRegistered(id, name));
             RaiseEvent(new ResourceManagerAdded(managerId));
         }
 
