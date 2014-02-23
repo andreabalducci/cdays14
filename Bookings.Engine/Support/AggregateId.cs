@@ -10,7 +10,7 @@ namespace Bookings.Engine.Support
     {
         public Guid Id { get; private set; }
 
-        public AggregateId()
+        protected AggregateId()
         {
             this.Id = Guid.NewGuid();
         }
