@@ -27,7 +27,7 @@ namespace Bookings.Specs.Specs.ResourceSpecs
 
             private static readonly UserId _managerId = new UserId();
 
-            private Establish content = () =>
+            private Establish context = () =>
             {
                 var state = new ResourceState()
                 {

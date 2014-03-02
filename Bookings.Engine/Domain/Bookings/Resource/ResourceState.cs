@@ -9,6 +9,7 @@ namespace Bookings.Engine.Domain.Bookings.Resource
 {
     public class ResourceState : AggregateState<ResourceId>
     {
+        #region demo
         public class Reservation
         {
             public BookingRequestId RequestId { get; private set; }
@@ -57,20 +58,24 @@ namespace Bookings.Engine.Domain.Bookings.Resource
             return Managers.Contains(userId);
         }
 
+        public bool IsResourceAvailable(BookingInterval interval)
+        {
+            return this.Reservations.All(x => !x.Interval.Overlaps(interval));
+        }
+        #endregion
         public override void EnsureAllInvariants()
         {
             base.EnsureAllInvariants();
 
-            if(this.Name == null)
+            if (this.Name == null)
                 throw new DomainException("Resource name not set");
 
-            if(!this.Managers.Any())
+            if (!this.Managers.Any())
                 throw new DomainException(string.Format("Resource {0} needs a manager", this.Name));
         }
 
-        public bool IsResourceAvailable(BookingInterval interval)
-        {
-            return this.Reservations.All(x => !x.Interval.Overlaps(interval));
+        public bool HasBeenRegistered {
+            get { return this.Id != null; }
         }
     }
 }
