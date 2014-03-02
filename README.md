@@ -2,7 +2,9 @@ cdays14
 =======
 
 Sample code for http://www.communitydays.it/events/2014/vs05/ 
+
 Slides http://www.slideshare.net/ziobrando/idea-postit-test-verdi
+
 Lanyrd http://lanyrd.com/2014/cdays14/scxbbf/
 
 
